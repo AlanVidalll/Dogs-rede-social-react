@@ -13,13 +13,13 @@ const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
-  const { userlogin, error, loading } = React.useContext(UserContext);
+  const { userLogin, error, loading } = React.useContext(UserContext);
 
   async function handleSubmit(event) {
     event.preventDefault();
 
     if (username.validate() && password.validate()) {
-      userlogin(username.value, password.value);
+      userLogin(username.value, password.value);
     }
   }
 
