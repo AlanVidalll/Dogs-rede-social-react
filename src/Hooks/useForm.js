@@ -10,6 +10,11 @@ const types = {
     message:
       "A senha precisa ter 1 caracter maíusculo, 1 minúsculo e 1 digito. Com mínimo de 8 caracteres.",
   },
+  number:{
+    regex: /^\d+$/,
+    message:
+      "Utilize números apenas.",
+  }
 };
 const useForm = (type) => {
   const [value, setValue] = React.useState("");
