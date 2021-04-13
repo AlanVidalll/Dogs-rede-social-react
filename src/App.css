@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Spectral+SC:wght@700&family=Spectral:wght@700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Spectral+SC:wght@700&family=Spectral:wght@700&display=swap");
 
 * {
   box-sizing: border-box;
@@ -45,26 +45,25 @@ input {
   padding: 0 1rem;
   margin: 0 auto;
 }
-.mainContainer{
-  margin-top: 4rem;
+.mainContainer {
+  margin-top: 2rem;
 }
 
-a{
+a {
   text-decoration: none;
   color: #333;
 }
 
-.title{
+.title {
   font-family: var(--type-second);
   line-height: 1;
   font-size: 3rem;
   margin: 1rem 0;
   position: relative;
   z-index: 1;
-
 }
 
-.title::after{
+.title::after {
   content: "";
   display: block;
   width: 1.5rem;
@@ -76,16 +75,29 @@ a{
   border-radius: 0.2rem;
   z-index: -1;
 }
-.animeLeft{
+.animeLeft {
   opacity: 0;
   transform: translateX(-20px);
-  animation: animeLeft .3s forwards;
+  animation: animeLeft 0.3s forwards;
 }
 
 @keyframes animeLeft {
-  to{
+  to {
     opacity: 1;
     transform: initial;
   }
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh + 10rem);
+}
+
+.AppBody {
+  flex: 1;
+}
+
+.VictoryContainer{
+  height: initial !important;
+}

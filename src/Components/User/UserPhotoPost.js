@@ -7,6 +7,7 @@ import Button from "../Forms/Button";
 import { PHOTO_POST } from "../../api";
 import Error from "../Helper/Error";
 import { useNavigate } from "react-router-dom";
+import Head from "../Helper/Head";
 
 const UserPhotoPost = () => {
   const nome = useForm();
@@ -18,8 +19,7 @@ const UserPhotoPost = () => {
   const { data, error, loading, request } = useFetch();
   React.useEffect(() => {
     if (data) navigate("/conta");
-  },[data, navigate]);
-
+  }, [data, navigate]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -31,7 +31,6 @@ const UserPhotoPost = () => {
     const token = window.localStorage.getItem("token");
     const { url, options } = PHOTO_POST(formData, token);
     request(url, options);
-    console.log("deu certo");
   }
 
   function handleImgChange({ target }) {
@@ -43,6 +42,7 @@ const UserPhotoPost = () => {
 
   return (
     <section className={`${styles.photoPost} animeLeft`}>
+      <Head title="Poste sua foto" />
       <form onSubmit={handleSubmit}>
         <Input label="Nome" type="text" name="nome" {...nome} />
         <Input label="Peso" type="number" name="peso" {...peso} />

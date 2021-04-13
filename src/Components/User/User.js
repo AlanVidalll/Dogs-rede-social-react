@@ -1,21 +1,27 @@
-import React from 'react'
-import { Route, Routes } from 'react-router-dom'
-import Feed from '../Feed/Feed'
-import UserHeader from './UserHeader'
-import UserPhotoPost from './UserPhotoPost'
-import UserStats from './UserStats'
+import React from "react";
+import { Route, Routes } from "react-router-dom";
+import Feed from "../Feed/Feed";
+import UserHeader from "./UserHeader";
+import UserPhotoPost from "./UserPhotoPost";
+import UserStats from "./UserStats";
+import { UserContext } from "../../UserContext";
+import NotFound from "../NotFound";
+import Head from "../Helper/Head";
 
 const User = () => {
-    return (
-        <section className='container'>
-       <UserHeader></UserHeader>
-       <Routes>
-           <Route path="/" element={<Feed/>}/>
-           <Route path="postar" element={<UserPhotoPost/>}/>
-           <Route path="estatisticas" element={<UserStats/>}/>
-       </Routes>
-        </section>
-    )
-}
+  const { data } = React.useContext(UserContext);
+  return (
+    <section className="container">
+      <Head title="Minha conta" />
+      <UserHeader></UserHeader>
+      <Routes>
+        <Route path="/" element={<Feed user={data.id} />} />
+        <Route path="postar" element={<UserPhotoPost />} />
+        <Route path="estatisticas" element={<UserStats />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </section>
+  );
+};
 
-export default User
+export default User;
