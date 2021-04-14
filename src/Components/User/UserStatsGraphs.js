@@ -1,6 +1,6 @@
-import React from 'react';
-import styles from './UserStatsGraph.module.css';
-import { VictoryPie, VictoryChart, VictoryBar } from 'victory';
+import React from "react";
+import styles from "./UserStatsGraph.module.css";
+import { VictoryPie, VictoryChart, VictoryBar } from "victory";
 
 const UserStatsGraphs = ({ data }) => {
   const [graph, setGraph] = React.useState([]);
@@ -15,7 +15,7 @@ const UserStatsGraphs = ({ data }) => {
     });
 
     setTotal(
-      data.map(({ acessos }) => Number(acessos)).reduce((a, b) => a + b),
+      data.map(({ acessos }) => Number(acessos)).reduce((a, b) => a + b)
     );
     setGraph(graphData);
   }, [data]);
@@ -33,12 +33,12 @@ const UserStatsGraphs = ({ data }) => {
           style={{
             data: {
               fillOpacity: 0.9,
-              stroke: '#fff',
+              stroke: "#fff",
               strokeWidth: 2,
             },
             labels: {
               fontSize: 14,
-              fill: '#333',
+              fill: "#333",
             },
           }}
         />
