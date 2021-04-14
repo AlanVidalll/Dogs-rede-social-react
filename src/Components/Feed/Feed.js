@@ -11,11 +11,10 @@ const Feed = ({ user }) => {
   React.useEffect(() => {
     let wait = false;
     function infiniteScroll() {
-      if (infinite === true) {
+      if (infinite) {
         const scroll = window.scrollY;
         const height = document.body.offsetHeight - window.innerHeight;
-        /* console.log(scroll)
-      console.log(height) */
+
         if (scroll > height * 0.75 && !wait) {
           setPages((pages) => [...pages, pages.length + 1]);
           wait = true;
@@ -25,6 +24,7 @@ const Feed = ({ user }) => {
         }
       }
     }
+
     window.addEventListener("wheel", infiniteScroll);
     window.addEventListener("scroll", infiniteScroll);
     return () => {
@@ -47,6 +47,17 @@ const Feed = ({ user }) => {
           setInfinite={setInfinite}
         />
       ))}
+      {!infinite && !user && (
+        <p
+          style={{
+            textAlign: "center",
+            padding: "2rem 0 4rem 0",
+            color: "#888",
+          }}
+        >
+          Não existem mais postagens.
+        </p>
+      )}
     </div>
   );
 };
@@ -54,10 +65,12 @@ const Feed = ({ user }) => {
 Feed.defaultProps = {
   user: 0,
 };
+
 Feed.propTypes = {
   user: PropTypes.oneOfType([
     PropTypes.string.isRequired,
     PropTypes.number.isRequired,
   ]),
 };
+
 export default Feed;
